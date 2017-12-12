@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/widget_row_background"
+    android:id="@+id/widget_row">
+
+    <TextView
+        android:id="@+id/widget_row_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Name"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/divider"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:alpha="1"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/w_ic_wifi"
+            android:layout_margin="3dp"
+            android:id="@+id/widget_wifi_image"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@drawable/w_ic_volume_up"
+            android:layout_margin="3dp"
+            android:id="@+id/widget_ringtone_image"/>
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/w_ic_call"
+            android:layout_margin="3dp"
+            android:id="@+id/widget_call_image"
+            />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/w_ic_email"
+            android:layout_margin="3dp"
+            android:id="@+id/widget_message_image"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp">
+
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/w_ic_media_volume_medium"
+            android:layout_margin="3dp"
+            android:id="@+id/widget_media_image"
+            />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/w_ic_brightness_high"
+            android:layout_margin="3dp"
+            android:id="@+id/widget_br_image"
+            />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/w_ic_bluetooth_yes"
+            android:layout_margin="3dp"
+            android:id="@+id/widget_bluetooth_image"
+            />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/w_ic_lock_closed"
+            android:layout_margin="3dp"
+            android:id="@+id/widget_lock_image"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
+

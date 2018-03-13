@@ -278,7 +278,7 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No"
+                    android:text="Off"
                     android:id="@+id/bluetooth_no_check"
                     android:textSize="15dp"
                     android:layout_marginLeft="20dp"
@@ -286,7 +286,7 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yes"
+                    android:text="On"
                     android:id="@+id/bluetooth_yes_check"
                     android:textSize="15dp"
                     android:layout_marginLeft="20dp"

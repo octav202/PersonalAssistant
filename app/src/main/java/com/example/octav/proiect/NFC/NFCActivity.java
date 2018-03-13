@@ -28,6 +28,17 @@ import com.example.octav.proiect.Utils.Utils;
 
 import java.util.List;
 
+import static com.example.octav.proiect.Utils.Constants.HIGH;
+import static com.example.octav.proiect.Utils.Constants.LOW;
+import static com.example.octav.proiect.Utils.Constants.MAX;
+import static com.example.octav.proiect.Utils.Constants.MEDIUM;
+import static com.example.octav.proiect.Utils.Constants.MIN;
+import static com.example.octav.proiect.Utils.Constants.MUTE;
+import static com.example.octav.proiect.Utils.Constants.NORMAL;
+import static com.example.octav.proiect.Utils.Constants.OFF;
+import static com.example.octav.proiect.Utils.Constants.ON;
+import static com.example.octav.proiect.Utils.Constants.VIBRATE;
+
 
 /**
  * Created by Octav on 5/2/2016.
@@ -322,11 +333,11 @@ public class NFCActivity extends AppCompatActivity implements NFCAsyncTask.NFCLi
                 ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_ringtone));
                 ringtone.setAlpha(0.4f);
             }
-            if(currentMode.ringtone.equals("Normal"))
+            if(currentMode.ringtone.equals(NORMAL))
                 ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_ringtone));
-            if(currentMode.ringtone.equals("Vibrate"))
+            if(currentMode.ringtone.equals(VIBRATE))
                 ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_vibrate));
-            if(currentMode.ringtone.equals("Mute")) {
+            if(currentMode.ringtone.equals(MUTE)) {
                 ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_ringtone));
                 ringtone.setAlpha(0.4f);
             }
@@ -344,11 +355,11 @@ public class NFCActivity extends AppCompatActivity implements NFCAsyncTask.NFCLi
 
 
             //Media
-            if(currentMode.mediaVolume.equals("Min"))
+            if(currentMode.mediaVolume.equals(MIN))
                 media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_min));
-            if(currentMode.mediaVolume.equals("Medium"))
+            if(currentMode.mediaVolume.equals(MEDIUM))
                 media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_medium));
-            if(currentMode.mediaVolume.equals("Max"))
+            if(currentMode.mediaVolume.equals(MAX))
                 media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_max));
             if(currentMode.mediaVolume.equals("")) {
                 media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_medium));
@@ -357,11 +368,11 @@ public class NFCActivity extends AppCompatActivity implements NFCAsyncTask.NFCLi
 
             //Brightness
 
-            if(currentMode.brightness.equals("Low"))
+            if(currentMode.brightness.equals(LOW))
                 brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_low));
-            if(currentMode.brightness.equals("Medium"))
+            if(currentMode.brightness.equals(MEDIUM))
                 brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_medium));
-            if(currentMode.brightness.equals("High"))
+            if(currentMode.brightness.equals(HIGH))
                 brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_high));
             if(currentMode.brightness.equals("")) {
                 brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_medium));
@@ -370,9 +381,9 @@ public class NFCActivity extends AppCompatActivity implements NFCAsyncTask.NFCLi
 
             //Bluetooth
 
-            if(currentMode.bluetooth.equals("Yes"))
+            if(currentMode.bluetooth.equals(ON))
                 bluetooth.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_bluetooth_yes));
-            if(currentMode.bluetooth.equals("No"))
+            if(currentMode.bluetooth.equals(OFF))
                 bluetooth.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_bluetooth_no));
             if(currentMode.bluetooth.equals("")) {
                 bluetooth.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_bluetooth_yes));
@@ -381,9 +392,9 @@ public class NFCActivity extends AppCompatActivity implements NFCAsyncTask.NFCLi
 
             //Lockscreen
 
-            if(currentMode.lockScreen.equals("Yes"))
+            if(currentMode.lockScreen.equals(ON))
                 lockscreen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_lock_closed));
-            if(currentMode.lockScreen.equals("No"))
+            if(currentMode.lockScreen.equals(OFF))
                 lockscreen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_lock_open));
             if(currentMode.lockScreen.equals("")) {
                 lockscreen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_lock_closed));

@@ -24,6 +24,17 @@ import com.example.octav.proiect.Widget.WidgetProvider;
 
 import java.util.List;
 
+import static com.example.octav.proiect.Utils.Constants.HIGH;
+import static com.example.octav.proiect.Utils.Constants.LOW;
+import static com.example.octav.proiect.Utils.Constants.MAX;
+import static com.example.octav.proiect.Utils.Constants.MEDIUM;
+import static com.example.octav.proiect.Utils.Constants.MIN;
+import static com.example.octav.proiect.Utils.Constants.MUTE;
+import static com.example.octav.proiect.Utils.Constants.NORMAL;
+import static com.example.octav.proiect.Utils.Constants.OFF;
+import static com.example.octav.proiect.Utils.Constants.ON;
+import static com.example.octav.proiect.Utils.Constants.VIBRATE;
+
 public class ModesAdapter extends ArrayAdapter<ModeObject> {
 
     private DataBase db;
@@ -100,22 +111,22 @@ public class ModesAdapter extends ArrayAdapter<ModeObject> {
             holder.ringtone.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_ringtone));
             holder.ringtone.setAlpha(0.4f);
         }
-        if(mode.ringtone.equals("Normal"))
+        if(mode.ringtone.equals(NORMAL))
             holder.ringtone.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_ringtone));
-        if(mode.ringtone.equals("Vibrate"))
+        if(mode.ringtone.equals(VIBRATE))
             holder.ringtone.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_vibrate));
-        if(mode.ringtone.equals("Mute")) {
+        if(mode.ringtone.equals(MUTE)) {
             holder.ringtone.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_ringtone));
             holder.ringtone.setAlpha(0.4f);
         }
 
 
         //Media
-        if(mode.mediaVolume.equals("Min"))
+        if(mode.mediaVolume.equals(MIN))
             holder.media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_media_volume_min));
-        if(mode.mediaVolume.equals("Medium"))
+        if(mode.mediaVolume.equals(MEDIUM))
             holder.media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_media_volume_medium));
-        if(mode.mediaVolume.equals("Max"))
+        if(mode.mediaVolume.equals(MAX))
             holder.media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_media_volume_max));
         if(mode.mediaVolume.equals("")) {
             holder.media.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_media_volume_medium));
@@ -124,11 +135,11 @@ public class ModesAdapter extends ArrayAdapter<ModeObject> {
 
         //Brightness
 
-        if(mode.brightness.equals("Low"))
+        if(mode.brightness.equals(LOW))
             holder.brightness.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_brightness_low));
-        if(mode.brightness.equals("Medium"))
+        if(mode.brightness.equals(MEDIUM))
             holder.brightness.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_brightness_medium));
-        if(mode.brightness.equals("High"))
+        if(mode.brightness.equals(HIGH))
             holder.brightness.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_brightness_high));
         if(mode.brightness.equals("")) {
             holder.brightness.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_brightness_medium));
@@ -137,9 +148,9 @@ public class ModesAdapter extends ArrayAdapter<ModeObject> {
 
         //Bluetooth
 
-        if(mode.bluetooth.equals("Yes"))
+        if(mode.bluetooth.equals(ON))
             holder.bluetooth.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_bluetooth_yes));
-        if(mode.bluetooth.equals("No"))
+        if(mode.bluetooth.equals(OFF))
             holder.bluetooth.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_bluetooth_no));
         if(mode.bluetooth.equals("")) {
             holder.bluetooth.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_bluetooth_yes));
@@ -148,9 +159,9 @@ public class ModesAdapter extends ArrayAdapter<ModeObject> {
 
         //Lockscreen
 
-        if(mode.lockScreen.equals("Yes"))
+        if(mode.lockScreen.equals(ON))
             holder.lockscreen.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_lock_closed));
-        if(mode.lockScreen.equals("No"))
+        if(mode.lockScreen.equals(OFF))
             holder.lockscreen.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_lock_open));
         if(mode.lockScreen.equals("")) {
             holder.lockscreen.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_lock_closed));

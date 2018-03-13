@@ -20,6 +20,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import static com.example.octav.proiect.Utils.Constants.NOTIFICATION_EXTRA_PARCELABLE;
+import static com.example.octav.proiect.Utils.Constants.REMINDER;
+
 public class NotificationAdapter extends ArrayAdapter<NotificationObject> {
 
     private DataBase db;
@@ -160,8 +163,8 @@ public class NotificationAdapter extends ArrayAdapter<NotificationObject> {
         if(n.reminder !=0) {
             Intent reminderIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
             reminderIntent.addCategory("android.intent.category.DEFAULT");
-            reminderIntent.putExtra("notificationInfo", n);
-            reminderIntent.putExtra("reminder",true);
+            reminderIntent.putExtra(NOTIFICATION_EXTRA_PARCELABLE, n);
+            reminderIntent.putExtra(REMINDER,true);
             PendingIntent broadcast = PendingIntent.getBroadcast(context, -n.id, reminderIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             broadcast.cancel();
@@ -170,8 +173,8 @@ public class NotificationAdapter extends ArrayAdapter<NotificationObject> {
         //Cancel Notification
         Intent notificationIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
         notificationIntent.addCategory("android.intent.category.DEFAULT");
-        notificationIntent.putExtra("notificationInfo", n);
-        notificationIntent.putExtra("reminder", false);
+        notificationIntent.putExtra(NOTIFICATION_EXTRA_PARCELABLE, n);
+        notificationIntent.putExtra(REMINDER, false);
         PendingIntent broadcast = PendingIntent.getBroadcast(context, n.id, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         broadcast.cancel();
         manager.cancel(broadcast);

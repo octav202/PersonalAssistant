@@ -10,6 +10,8 @@ import com.example.octav.proiect.Utils.Utils;
 
 import java.util.List;
 
+import static com.example.octav.proiect.Utils.Constants.WIDGET_MODE;
+
 /**
  * Created by Octav on 5/5/2016.
  */
@@ -17,7 +19,7 @@ public class WidgetBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        int mode = intent.getExtras().getInt("widget_mode");
+        int mode = intent.getExtras().getInt(WIDGET_MODE);
         DataBase db = new DataBase(context.openOrCreateDatabase("MyDataBase", Context.MODE_PRIVATE, null));
         List<ModeObject> modeList = db.getModes();
         for(ModeObject m : modeList){

@@ -30,6 +30,11 @@ import com.example.octav.proiect.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static com.example.octav.proiect.Utils.Constants.ALARM_ACTION;
+import static com.example.octav.proiect.Utils.Constants.ALARM_EXTRA_PARCELABLE;
+import static com.example.octav.proiect.Utils.Constants.CURRENT_ALARM;
+import static com.example.octav.proiect.Utils.Constants.IS_ALARM_EDIT;
+
 public class AddAlarmDialog extends DialogFragment {
 
     public interface OnSetTimeInterface{
@@ -74,8 +79,8 @@ public class AddAlarmDialog extends DialogFragment {
     public static AddAlarmDialog newInstance(AlarmObject a, boolean isEditing) {
         AddAlarmDialog f = new AddAlarmDialog();
         Bundle args = new Bundle();
-        args.putParcelable("currentAlarm",a);
-        args.putBoolean("isAlarmEditing",isEditing);
+        args.putParcelable(CURRENT_ALARM,a);
+        args.putBoolean(IS_ALARM_EDIT,isEditing);
         f.setArguments(args);
         mode = 0;
         return f;
@@ -86,8 +91,8 @@ public class AddAlarmDialog extends DialogFragment {
 
         db = new DataBase(getActivity().openOrCreateDatabase("MyDataBase", Context.MODE_PRIVATE, null));
 
-        currentAlarm = getArguments().getParcelable("currentAlarm");
-        isEditing = getArguments().getBoolean("isAlarmEditing");
+        currentAlarm = getArguments().getParcelable(CURRENT_ALARM);
+        isEditing = getArguments().getBoolean(IS_ALARM_EDIT);
 
         context = getActivity().getApplicationContext();
 
@@ -321,8 +326,8 @@ public class AddAlarmDialog extends DialogFragment {
                 Log.w("CANCELED", "CANCELED ALARM:" +id+" ("+alarm.hour+":"+alarm.minute+")");
 
                 AlarmManager manager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-                Intent i = new Intent("alarm_view");
-                i.putExtra("alarmInfo",alarm);
+                Intent i = new Intent(ALARM_ACTION);
+                i.putExtra(ALARM_EXTRA_PARCELABLE,alarm);
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, id, i, PendingIntent.FLAG_UPDATE_CURRENT);
                 pendingIntent.cancel();
                 manager.cancel(pendingIntent);
@@ -336,8 +341,8 @@ public class AddAlarmDialog extends DialogFragment {
             calSet.set(Calendar.MINUTE, alarm.minute);
             calSet.set(Calendar.SECOND, 0);
             calSet.set(Calendar.MILLISECOND, 0);
-            Intent i = new Intent("alarm_view");
-            i.putExtra("alarmInfo", alarm);
+            Intent i = new Intent(ALARM_ACTION);
+            i.putExtra(ALARM_EXTRA_PARCELABLE, alarm);
             PendingIntent operation = PendingIntent.getActivity(context, id, i, Intent.FLAG_ACTIVITY_NEW_TASK);
 
             if(calSet.getTimeInMillis() < System.currentTimeMillis()) {

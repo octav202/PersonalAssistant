@@ -6,10 +6,12 @@ import android.view.WindowManager;
 
 import com.example.octav.proiect.R;
 
+import static com.example.octav.proiect.Utils.Constants.EXTRA_BRIGHTNESS;
+import static com.example.octav.proiect.Utils.Constants.HIGH;
+import static com.example.octav.proiect.Utils.Constants.LOW;
+import static com.example.octav.proiect.Utils.Constants.MEDIUM;
 
-/**
- * Created by Octav on 5/8/2016.
- */
+
 public class TransparentActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,16 +19,16 @@ public class TransparentActivity extends Activity {
         setContentView(R.layout.tansparent_layout);
 
         if(getIntent().getExtras()!=null){
-            String brightness = getIntent().getExtras().getString("brightness");
-            if(brightness.equals("Low")){
+            String brightness = getIntent().getExtras().getString(EXTRA_BRIGHTNESS);
+            if(brightness.equals(LOW)){
                 WindowManager.LayoutParams lp = getWindow().getAttributes();
                 lp.screenBrightness = 0f;
             }
-            if(brightness.equals("Medium")){
+            if(brightness.equals(MEDIUM)){
                 WindowManager.LayoutParams lp = getWindow().getAttributes();
                 lp.screenBrightness = 0.5f;
             }
-            if(brightness.equals("High")){
+            if(brightness.equals(HIGH)){
                 WindowManager.LayoutParams lp = getWindow().getAttributes();
                 lp.screenBrightness = 1f;
             }}

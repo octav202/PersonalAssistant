@@ -26,6 +26,17 @@ import com.example.octav.proiect.Utils.Utils;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import static com.example.octav.proiect.Utils.Constants.HIGH;
+import static com.example.octav.proiect.Utils.Constants.LOW;
+import static com.example.octav.proiect.Utils.Constants.MAX;
+import static com.example.octav.proiect.Utils.Constants.MEDIUM;
+import static com.example.octav.proiect.Utils.Constants.MIN;
+import static com.example.octav.proiect.Utils.Constants.MUTE;
+import static com.example.octav.proiect.Utils.Constants.NORMAL;
+import static com.example.octav.proiect.Utils.Constants.OFF;
+import static com.example.octav.proiect.Utils.Constants.ON;
+import static com.example.octav.proiect.Utils.Constants.VIBRATE;
+
 public class AddModeDialog extends DialogFragment{
 
     public interface OnSetModeInterface {
@@ -328,13 +339,13 @@ public class AddModeDialog extends DialogFragment{
 
             wifi_check.setChecked(currentMode.wifi);
 
-            if(currentMode.ringtone.equals("Mute"))
+            if(currentMode.ringtone.equals(MUTE))
                 volume_mute_check.setChecked(true);
 
-            if(currentMode.ringtone.equals("Vibrate"))
+            if(currentMode.ringtone.equals(VIBRATE))
                 volume_vibrate_check.setChecked(true);
 
-            if(currentMode.ringtone.equals("Normal"))
+            if(currentMode.ringtone.equals(NORMAL))
                 volume_normal_check.setChecked(true);
 
             if(!currentMode.image.equals("")) {
@@ -344,34 +355,34 @@ public class AddModeDialog extends DialogFragment{
 
 
             //Media
-            if(currentMode.mediaVolume.equals("Min"))
+            if(currentMode.mediaVolume.equals(MIN))
                 media_mute_check.setChecked(true);
-            if(currentMode.mediaVolume.equals("Medium"))
+            if(currentMode.mediaVolume.equals(MEDIUM))
                 media_normal_check.setChecked(true);
-            if(currentMode.mediaVolume.equals("Max"))
+            if(currentMode.mediaVolume.equals(MAX))
                 media_max_check.setChecked(true);
 
             //Brightness
 
-            if(currentMode.brightness.equals("Low"))
+            if(currentMode.brightness.equals(LOW))
                 br_low_check.setChecked(true);
-            if(currentMode.brightness.equals("Medium"))
+            if(currentMode.brightness.equals(MEDIUM))
                 br_medium_check.setChecked(true);
-            if(currentMode.brightness.equals("High"))
+            if(currentMode.brightness.equals(HIGH))
                 br_high_check.setChecked(true);
 
             //Bluetooth
 
-            if(currentMode.bluetooth.equals("Yes"))
+            if(currentMode.bluetooth.equals(ON))
                 bluetooth_yes_check.setChecked(true);
-            if(currentMode.bluetooth.equals("No"))
+            if(currentMode.bluetooth.equals(OFF))
                 bluetooth_no_check.setChecked(true);
 
             //Lockscreen
 
-            if(currentMode.lockScreen.equals("Yes"))
+            if(currentMode.lockScreen.equals(ON))
                 lock_yes_check.setChecked(true);
-            if(currentMode.lockScreen.equals("No"))
+            if(currentMode.lockScreen.equals(OFF))
                 lock_no_check.setChecked(true);
 
         }
@@ -391,27 +402,27 @@ public class AddModeDialog extends DialogFragment{
 
                 String volume = "Normal";
                 if(volume_mute_check.isChecked())
-                    volume = "Mute";
+                    volume = MUTE;
                 if(volume_normal_check.isChecked())
-                    volume = "Normal";
+                    volume = NORMAL;
                 if(volume_vibrate_check.isChecked())
-                    volume = "Vibrate";
+                    volume = VIBRATE;
 
                 String media = "";
                 if(media_mute_check.isChecked())
-                    media = "Min";
+                    media = MIN;
                 if(media_normal_check.isChecked())
-                    media = "Medium";
+                    media = MEDIUM;
                 if(media_max_check.isChecked())
-                    media = "Max";
+                    media = MAX;
 
                 String brightness = "";
                 if(br_low_check.isChecked())
-                    brightness = "Low";
+                    brightness = LOW;
                 if(br_medium_check.isChecked())
-                    brightness = "Medium";
+                    brightness = MEDIUM;
                 if(br_high_check.isChecked())
-                    brightness = "High";
+                    brightness = HIGH;
 
                 String callMessage = "";
                 String smsMessage = "";
@@ -424,16 +435,16 @@ public class AddModeDialog extends DialogFragment{
 
                 String bluetooth = "";
                 if(bluetooth_yes_check.isChecked())
-                    bluetooth = "Yes";
+                    bluetooth = ON;
                 if(bluetooth_no_check.isChecked())
-                    bluetooth = "No";
+                    bluetooth = OFF;
 
                 String lockscreen = "";
                 if(lock_yes_check.isChecked())
-                    lockscreen = "Yes";
+                    lockscreen = ON;
 
                 if(lock_no_check.isChecked())
-                    lockscreen = "No";
+                    lockscreen = OFF;
 
                 String imagePath="";
                 if(modeImage!=null)

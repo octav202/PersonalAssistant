@@ -12,6 +12,20 @@ import com.example.octav.proiect.R;
 
 import java.util.List;
 
+import static com.example.octav.proiect.Utils.Constants.HIGH;
+import static com.example.octav.proiect.Utils.Constants.ID_KEY;
+import static com.example.octav.proiect.Utils.Constants.LOW;
+import static com.example.octav.proiect.Utils.Constants.MAX;
+import static com.example.octav.proiect.Utils.Constants.MEDIUM;
+import static com.example.octav.proiect.Utils.Constants.MIN;
+import static com.example.octav.proiect.Utils.Constants.MUTE;
+import static com.example.octav.proiect.Utils.Constants.NORMAL;
+import static com.example.octav.proiect.Utils.Constants.OFF;
+import static com.example.octav.proiect.Utils.Constants.ON;
+import static com.example.octav.proiect.Utils.Constants.SHARED_NAME;
+import static com.example.octav.proiect.Utils.Constants.VIBRATE;
+import static com.example.octav.proiect.Utils.Constants.WIDGET_MODE;
+
 
 public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
@@ -53,8 +67,8 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
         ModeObject mode = modeList.get(position);
 
 
-        SharedPreferences prefs = ctxt.getSharedPreferences("ACTIVE_MODE", ctxt.MODE_PRIVATE);
-        final Integer selectedId = prefs.getInt("id", 0);
+        SharedPreferences prefs = ctxt.getSharedPreferences(SHARED_NAME, ctxt.MODE_PRIVATE);
+        final Integer selectedId = prefs.getInt(ID_KEY, 0);
 
         if (selectedId != null && selectedId == mode.id) {
             row.setInt(R.id.widget_row, "setBackgroundResource", R.drawable.widget_row_background_selected);
@@ -75,7 +89,7 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
 
 
-        if(mode.ringtone.equals("Normal"))
+        if(mode.ringtone.equals(NORMAL))
             row.setImageViewResource(R.id.widget_ringtone_image,R.drawable.w_ic_volume_up);
         else
             row.setImageViewResource(R.id.widget_ringtone_image,R.drawable.w_ic_volume_up_faded);
@@ -84,11 +98,11 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
         if(mode.ringtone.equals("")) {
             row.setImageViewResource(R.id.widget_ringtone_image,R.drawable.w_ic_ringtone_faded);
         }
-        if(mode.ringtone.equals("Normal"))
+        if(mode.ringtone.equals(NORMAL))
             row.setImageViewResource(R.id.widget_ringtone_image,R.drawable.w_ic_ringtone);
-        if(mode.ringtone.equals("Vibrate"))
+        if(mode.ringtone.equals(VIBRATE))
             row.setImageViewResource(R.id.widget_ringtone_image,R.drawable.w_ic_vibrate);
-        if(mode.ringtone.equals("Mute")) {
+        if(mode.ringtone.equals(MUTE)) {
             row.setImageViewResource(R.id.widget_ringtone_image,R.drawable.w_ic_ringtone_faded);
         }
 
@@ -104,11 +118,11 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
 
         //Media
-        if(mode.mediaVolume.equals("Min"))
+        if(mode.mediaVolume.equals(MIN))
             row.setImageViewResource(R.id.widget_media_image,R.drawable.w_ic_media_volume_min);
-        if(mode.mediaVolume.equals("Medium"))
+        if(mode.mediaVolume.equals(MEDIUM))
             row.setImageViewResource(R.id.widget_media_image,R.drawable.w_ic_media_volume_medium);
-        if(mode.mediaVolume.equals("Max"))
+        if(mode.mediaVolume.equals(MAX))
             row.setImageViewResource(R.id.widget_media_image,R.drawable.w_ic_media_volume_max);
         if(mode.mediaVolume.equals("")) {
             row.setImageViewResource(R.id.widget_media_image,R.drawable.w_ic_media_volume_max_faded);
@@ -116,11 +130,11 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
         //Brightness
 
-        if(mode.brightness.equals("Low"))
+        if(mode.brightness.equals(LOW))
             row.setImageViewResource(R.id.widget_br_image,R.drawable.w_ic_brightness_low);
-        if(mode.brightness.equals("Medium"))
+        if(mode.brightness.equals(MEDIUM))
             row.setImageViewResource(R.id.widget_br_image,R.drawable.w_ic_brightness_medium);
-        if(mode.brightness.equals("High"))
+        if(mode.brightness.equals(HIGH))
             row.setImageViewResource(R.id.widget_br_image,R.drawable.w_ic_brightness_high);
         if(mode.brightness.equals("")) {
             row.setImageViewResource(R.id.widget_br_image,R.drawable.w_ic_brightness_medium_faded);
@@ -128,9 +142,9 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
         //Bluetooth
 
-        if(mode.bluetooth.equals("Yes"))
+        if(mode.bluetooth.equals(ON))
             row.setImageViewResource(R.id.widget_bluetooth_image,R.drawable.w_ic_bluetooth_yes);
-        if(mode.bluetooth.equals("No"))
+        if(mode.bluetooth.equals(OFF))
             row.setImageViewResource(R.id.widget_bluetooth_image,R.drawable.w_ic_bluetooth_no);
         if(mode.bluetooth.equals("")) {
             row.setImageViewResource(R.id.widget_bluetooth_image,R.drawable.w_ic_bluetooth_yes_faded);
@@ -138,16 +152,16 @@ public class WidgetViewsFactory implements RemoteViewsService.RemoteViewsFactory
 
         //Lockscreen
 
-        if(mode.lockScreen.equals("Yes"))
+        if(mode.lockScreen.equals(ON))
             row.setImageViewResource(R.id.widget_lock_image,R.drawable.w_ic_lock_closed);
-        if(mode.lockScreen.equals("No"))
+        if(mode.lockScreen.equals(OFF))
             row.setImageViewResource(R.id.widget_lock_image,R.drawable.w_ic_lock_open);
         if(mode.lockScreen.equals("")) {
             row.setImageViewResource(R.id.widget_lock_image,R.drawable.w_ic_lock_closed_faded);
         }
 
         Intent i=new Intent();
-        i.putExtra("widget_mode",mode.id);
+        i.putExtra(WIDGET_MODE,mode.id);
         row.setOnClickFillInIntent(R.id.widget_row, i);
 
         return(row);

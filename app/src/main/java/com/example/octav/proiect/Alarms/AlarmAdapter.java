@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import static com.example.octav.proiect.Utils.Constants.ALARM_ACTION;
+import static com.example.octav.proiect.Utils.Constants.ALARM_EXTRA_PARCELABLE;
+
 public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
 
     private DataBase db;
@@ -310,8 +313,8 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
             int id = alarm.id * 1000 + day;
             Log.w("CANCEL", "CANCELED ALARM:" + id+" ("+alarm.hour+":"+alarm.minute+")");
             AlarmManager manager = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
-            Intent i = new Intent("alarm_view");
-            i.putExtra("alarmInfo",alarm);
+            Intent i = new Intent(ALARM_ACTION);
+            i.putExtra(ALARM_EXTRA_PARCELABLE,alarm);
             PendingIntent pendingIntent = PendingIntent.getActivity(getContext(),
                    id, i, PendingIntent.FLAG_UPDATE_CURRENT);
             pendingIntent.cancel();
@@ -325,8 +328,8 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
         int id = alarm.id * 1000 + day;
         Log.w("CANCEL", "CANCELED ALARM:" + id+" ("+alarm.hour+":"+alarm.minute+")");
         AlarmManager manager = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
-        Intent i = new Intent("alarm_view");
-        i.putExtra("alarmInfo",alarm);
+        Intent i = new Intent(ALARM_ACTION);
+        i.putExtra(ALARM_EXTRA_PARCELABLE,alarm);
         PendingIntent pendingIntent = PendingIntent.getActivity(getContext(),
                 id, i, PendingIntent.FLAG_UPDATE_CURRENT);
         pendingIntent.cancel();
@@ -345,8 +348,8 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
         calSet.set(Calendar.MINUTE, alarm.minute);
         calSet.set(Calendar.SECOND, 0);
         calSet.set(Calendar.MILLISECOND, 0);
-        Intent i = new Intent("alarm_view");
-        i.putExtra("alarmInfo", alarm);
+        Intent i = new Intent(ALARM_ACTION);
+        i.putExtra(ALARM_EXTRA_PARCELABLE, alarm);
         PendingIntent operation = PendingIntent.getActivity(getContext(), id, i, Intent.FLAG_ACTIVITY_NEW_TASK);
 
         if(calSet.getTimeInMillis() < System.currentTimeMillis()) {
@@ -378,8 +381,8 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
             Log.w("CANCELED", "CANCELED ALARM:" +id+" ("+alarm.hour+":"+alarm.minute+")");
 
             AlarmManager manager = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
-            Intent oldIntent = new Intent("alarm_view");
-            oldIntent.putExtra("alarmInfo", alarm);
+            Intent oldIntent = new Intent(ALARM_ACTION);
+            oldIntent.putExtra(ALARM_EXTRA_PARCELABLE, alarm);
             PendingIntent pendingIntent = PendingIntent.getActivity(getContext(),
                     id, oldIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             pendingIntent.cancel();
@@ -393,8 +396,8 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
             calSet.set(Calendar.MINUTE, alarm.minute);
             calSet.set(Calendar.SECOND, 0);
             calSet.set(Calendar.MILLISECOND, 0);
-            Intent i = new Intent("alarm_view");
-            i.putExtra("alarmInfo", alarm);
+            Intent i = new Intent(ALARM_ACTION);
+            i.putExtra(ALARM_EXTRA_PARCELABLE, alarm);
             PendingIntent operation = PendingIntent.getActivity(getContext(), id, i, Intent.FLAG_ACTIVITY_NEW_TASK);
 
             if(calSet.getTimeInMillis() < System.currentTimeMillis()) {

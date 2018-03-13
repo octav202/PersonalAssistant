@@ -28,6 +28,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.example.octav.proiect.Utils.Constants.MAP_TYPE;
+import static com.example.octav.proiect.Utils.Constants.TYPE_HYBRID;
+import static com.example.octav.proiect.Utils.Constants.TYPE_NORMAL;
+import static com.example.octav.proiect.Utils.Constants.TYPE_SATELLITE;
+
 public class MapFragment extends SupportMapFragment implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         GoogleMap.OnInfoWindowClickListener,
@@ -53,15 +58,15 @@ public class MapFragment extends SupportMapFragment implements GoogleApiClient.C
         db = new DataBase(getActivity().openOrCreateDatabase("MyDataBase", Context.MODE_PRIVATE, null));
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String map_type = settings.getString("map_type", null);
+        String map_type = settings.getString(MAP_TYPE, null);
         if(map_type==null){
             curMapTypeIndex = 1;
         }else {
-            if (map_type.equals("Satellite"))
+            if (map_type.equals(TYPE_SATELLITE))
                 curMapTypeIndex = 0;
-            if (map_type.equals("Normal"))
+            if (map_type.equals(TYPE_NORMAL))
                 curMapTypeIndex = 1;
-            if (map_type.equals("Hybrid"))
+            if (map_type.equals(TYPE_HYBRID))
                 curMapTypeIndex = 2;
         }
 

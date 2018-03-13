@@ -15,6 +15,10 @@ import com.example.octav.proiect.Utils.Utils;
 
 import java.util.List;
 
+import static com.example.octav.proiect.Utils.Constants.MUTE;
+import static com.example.octav.proiect.Utils.Constants.NORMAL;
+import static com.example.octav.proiect.Utils.Constants.VIBRATE;
+
 public class ModePickerAdapter extends ArrayAdapter<ModeObject> {
 
     Context context;
@@ -75,11 +79,11 @@ public class ModePickerAdapter extends ArrayAdapter<ModeObject> {
             holder.ringtone.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_ringtone));
             holder.ringtone.setAlpha(0.4f);
         }
-        if(mode.ringtone.equals("Normal"))
+        if(mode.ringtone.equals(NORMAL))
             holder.ringtone.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_ringtone));
-        if(mode.ringtone.equals("Vibrate"))
+        if(mode.ringtone.equals(VIBRATE))
             holder.ringtone.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_vibrate));
-        if(mode.ringtone.equals("Mute")) {
+        if(mode.ringtone.equals(MUTE)) {
             holder.ringtone.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_ringtone));
             holder.ringtone.setAlpha(0.4f);
         }

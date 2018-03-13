@@ -28,6 +28,10 @@ import com.google.android.gms.location.LocationServices;
 
 import java.util.ArrayList;
 
+import static com.example.octav.proiect.Utils.Constants.INTERVAL_1_MIN;
+import static com.example.octav.proiect.Utils.Constants.INTERVAL_3_MIN;
+import static com.example.octav.proiect.Utils.Constants.INTERVAL_5_MIN;
+
 public class LocationService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener
 {
     private static final String TAG = "PERSONAL_ASSISTANT";
@@ -128,11 +132,11 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
             LOCATION_INTERVAL = 1000 * 60;
         }
         else {
-            if (locationInterval.equals("1 min"))
+            if (locationInterval.equals(INTERVAL_1_MIN))
                 LOCATION_INTERVAL = 1000 * 60;
-            if (locationInterval.equals("3 min"))
+            if (locationInterval.equals(INTERVAL_3_MIN))
                 LOCATION_INTERVAL = 1000 * 60 * 3;
-            if (locationInterval.equals("5 min"))
+            if (locationInterval.equals(INTERVAL_5_MIN))
                 LOCATION_INTERVAL = 1000 * 60 * 5;
 
         }

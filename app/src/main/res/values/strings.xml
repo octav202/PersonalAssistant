@@ -6,4 +6,110 @@
 
     <string name="action_settings">Settings</string>
     <string name="google_api_key">AIzaSyA69SrdhG3H9_iJDrDWkCw-qOTGsyyQFJ0</string>
+
+    <!-- Alarms -->
+    <string name="alarm_switch_to_mode">Switch to mode:</string>
+    <string name="alarm_repeat">Repeat</string>
+    <string name="alarm_sunday">Su</string>
+    <string name="alarm_monday">Mo</string>
+    <string name="alarm_tuesday">Tu</string>
+    <string name="alarm_wednesday">We</string>
+    <string name="alarm_thursday">Th</string>
+    <string name="alarm_friday">Fr</string>
+    <string name="alarm_saturday">Sa</string>
+    <string name="alarm_weekly">Weekly</string>
+    <string name="alarm_message_label">Message: </string>
+    <string name="alarm_sound">Sound: </string>
+    <string name="alarm_volume_label">Volume: </string>
+    <string name="alarm_name_hint">Alarm name...     </string>
+    <string name="alarm_no_profile_hint">No profile selected</string>
+
+    <!-- Mark -->
+    <string name="mark_title">Title</string>
+    <string name="mark_title_hint">Enter the title..</string>
+    <string name="mark_radius">Radius</string>
+    <string name="mark_coordinates">latitude,longitude</string>
+    <string name="mark_meters_hint">In meters</string>
+    <string name="mark_profile_hint">No profile selected</string>
+
+    <!-- Mode -->
+    <string name="mode_pick_photo">Pick Photo</string>
+    <string name="mode_call_handler">Call Handler</string>
+    <string name="mode_reply_with_sms">Reply with SMS</string>
+    <string name="sms_handler">SMS Handler</string>
+    <string name="mode_wifi_data">Wifi/Data Connection</string>
+    <string name="mode_wifi">Wifi</string>
+    <string name="mode_normal">Normal</string>
+    <string name="mode_mute">Mute</string>
+    <string name="mode_media_volume">Media Volume</string>
+    <string name="mode_min">Min</string>
+    <string name="mode_medium">Medium</string>
+    <string name="mode_max">Max</string>
+    <string name="mode_brightness">Brightness</string>
+    <string name="mode_low">Low</string>
+    <string name="mode_high">High</string>
+    <string name="mode_bluetooth">Bluetooth</string>
+    <string name="mode_lockscreen">Lockscreen</string>
+    <string name="mode_message_hint">Enter the message..</string>
+    <string name="mode_no_modes">No modes</string>
+    <string name="jmd_group">JMD Group</string>
+
+    <!-- Notifications -->
+    <string name="not_date_label">Date : </string>
+    <string name="not_date_text">Date</string>
+    <string name="not_date_id">ID</string>
+    <string name="not_time_label">Time : </string>
+    <string name="not_time_text">Time</string>
+    <string name="not_profile_label">Profile : </string>
+    <string name="not_profile_mode_text">Mode</string>
+    <string name="not_reminder_label">Reminder : </string>
+    <string name="not_reminder_text">Reminder</string>
+    <string name="not_title_label">Title: </string>
+    <string name="not_message">Message</string>
+    <string name="not_profile">Profile</string>
+    <string name="not_switch_to_mode">Switch to mode</string>
+    <string name="not_add_details">Add details</string>
+    <string name="not_hour">Hour</string>
+    <string name="not_minute">Minute</string>
+    <string name="not_set">Not set</string>
+
+    <!-- Widget -->
+    <string name="w_name">Name</string>
+
+    <!-- Navigation -->
+    <string name="ok">OK</string>
+    <string name="nav_menu">Menu</string>
+    <string name="save">Save</string>
+    <string name="off">Off</string>
+    <string name="on">On</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
+
+    <!-- NFC -->
+    <string name="nfc_reading">Reading..</string>
+    <string name="nfc_edit_profile">Edit profile</string>
+    <string name="nfc_profile">Profile</string>
+
+    <!-- Settings -->
+    <string name="settings_alarms">Alarms</string>
+    <string name="settings_alarm_sound">Alarm Sound</string>
+    <string name="settings_ringtone">Ringtone</string>
+    <string name="settings_alarm">Alarm</string>
+    <string name="settings_notification">Notification</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_alarm_volume">Alarm volume</string>
+    <string name="settings_type">Type</string>
+    <string name="settings_sound">Sound</string>
+    <string name="settings_vibrate">Vibrate</string>
+    <string name="settings_silent">Silent</string>
+    <string name="settings_light_color">Light Color</string>
+    <string name="settings_location">Location</string>
+    <string name="settings_update_interval">Update Interval</string>
+    <string name="settings_interval_1_min">1 min</string>
+    <string name="settings_interval_3_min">3 min</string>
+    <string name="settings_interval_5_min">5 min</string>
+    <string name="settings_map_type">Map Type</string>
+    <string name="settings_map_type_hybrid">Hybrid</string>
+    <string name="settings_map_type_satellite">Satellite</string>
+
 </resources>

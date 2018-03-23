@@ -1,212 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:layout_marginLeft="10dp"
-            android:textSize="20dp"
-            android:visibility="gone"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/nameEditText"
-            android:layout_marginLeft="10dp"
-            android:textSize="20dp"
-            android:minWidth="100dp"
-            android:hint="Alarm name...     "
-            />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            />
-
-        <Button
-            android:id="@+id/set_time_button"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/text"
-            android:text="Save"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="-2dp"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-
-        <LinearLayout android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/modeSwitchLabel"
-                android:text="Profile"
-                android:layout_marginLeft="10dp"
-                android:textSize="15dp"/>
-
-            <Switch
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/alarmProfileSwitch"/>
-
-        </LinearLayout>
-
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/setModeCheckBox"
-            android:text="Switch to mode:"
-            android:visibility="gone"
-            />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/alarm_mode_picker_wrapper"
-            android:visibility="gone">
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/selected_mode_textView"
-                android:layout_marginLeft="40dp"
-                android:hint="No profile selected"/>
+                android:layout_marginLeft="10dp"
+                android:text="@string/w_name"
+                android:textSize="20dp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:hint="@string/alarm_name_hint"
+                android:minWidth="100dp"
+                android:textSize="20dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <Button
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_select_mode"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/mode_picker_button"/>
+                android:id="@+id/set_time_button"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="-2dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/save"
+                android:textColor="@color/text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/modeSwitchLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/nfc_profile"
+                    android:textSize="15dp" />
+
+                <Switch
+                    android:id="@+id/alarmProfileSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp" />
+
+            </LinearLayout>
+
+
+            <CheckBox
+                android:id="@+id/setModeCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alarm_switch_to_mode"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/alarm_mode_picker_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/selected_mode_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:hint="@string/alarm_no_profile_hint" />
+
+                <Button
+                    android:id="@+id/mode_picker_button"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_select_mode" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/set_button"
+            android:layout_centerHorizontal="true" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/repeatLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/alarm_repeat"
+                android:textSize="15dp" />
+
+            <Switch
+                android:id="@+id/repeatSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sunday_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/day_button"
+                android:text="@string/alarm_sunday" />
+
+            <Button
+                android:id="@+id/monday_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/day_button"
+                android:text="@string/alarm_monday" />
+
+            <Button
+                android:id="@+id/tuesday_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/day_button"
+                android:text="@string/alarm_tuesday" />
+
+            <Button
+                android:id="@+id/wednesday_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/day_button"
+                android:text="@string/alarm_wednesday" />
+
+            <Button
+                android:id="@+id/thursday_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/day_button"
+                android:text="@string/alarm_thursday" />
+
+            <Button
+                android:id="@+id/friday_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/day_button"
+                android:text="@string/alarm_friday" />
+
+            <Button
+                android:id="@+id/saturday_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/day_button"
+                android:text="@string/alarm_saturday" />
+        </LinearLayout>
     </LinearLayout>
-
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/set_button"
-        android:layout_centerHorizontal="true"/>
-
-
-    <LinearLayout android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-         android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/repeatLabel"
-            android:text="Repeat"
-            android:layout_marginLeft="10dp"
-            android:textSize="15dp"/>
-
-        <Switch
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/repeatSwitch"/>
-
-    </LinearLayout>
-
-    <LinearLayout android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp">
-
-        <Button
-            android:id="@+id/sunday_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="1dp"
-            android:background="@drawable/day_button"
-            android:text="Su" />
-
-        <Button
-            android:id="@+id/monday_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Mo"
-            android:layout_margin="1dp"
-            android:background="@drawable/day_button"
-            />
-
-        <Button
-            android:id="@+id/tuesday_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="1dp"
-            android:background="@drawable/day_button"
-            android:text="Tu"/>
-        <Button
-            android:id="@+id/wednesday_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="1dp"
-            android:background="@drawable/day_button"
-            android:text="We"/>
-        <Button
-            android:id="@+id/thursday_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="1dp"
-            android:background="@drawable/day_button"
-            android:text="Th"/>
-        <Button
-            android:id="@+id/friday_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="1dp"
-            android:background="@drawable/day_button"
-            android:text="Fr"/>
-        <Button
-            android:id="@+id/saturday_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="1dp"
-            android:background="@drawable/day_button"
-            android:text="Sa"
-            />
-    </LinearLayout>
-</LinearLayout>
 
 </ScrollView>

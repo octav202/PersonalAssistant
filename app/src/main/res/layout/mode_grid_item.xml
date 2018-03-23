@@ -1,103 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mode_grid_image_layout"
     android:layout_width="match_parent"
     android:layout_height="125dp"
     android:layout_margin="10dp"
-    android:id="@+id/mode_grid_image_layout"
-    android:background="@drawable/alarm_list_item"
-    >
+    android:background="@drawable/alarm_list_item">
 
     <ImageView
+        android:id="@+id/mode_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mode_image_view"
+        android:alpha="0.3"
         android:scaleType="centerCrop"
-        android:visibility="gone"
-        android:alpha="0.3"/>
+        android:visibility="gone" />
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="0dp"
-        >
+        android:orientation="vertical">
 
-        <TextView android:id="@+id/modeNameTextView"
+        <TextView
+            android:id="@+id/modeNameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textStyle="bold"
-            android:textSize="17dp"
-            android:textColor="#000000"
             android:layout_marginBottom="13dp"
             android:layout_marginTop="5dp"
-            android:text="Name" />
+            android:gravity="center_horizontal"
+            android:text="@string/w_name"
+            android:textColor="#000000"
+            android:textSize="17dp"
+            android:textStyle="bold" />
 
 
-        <LinearLayout android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/mode_icon_background"
+            android:orientation="vertical"
             android:padding="3dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="0dp">
+                android:layout_marginBottom="0dp"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/mode_button_background"
-                    android:layout_margin="2dp">
+                    android:layout_margin="2dp"
+                    android:background="@drawable/mode_button_background">
+
                     <ImageView
+                        android:id="@+id/mode_wifi_image"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_wifi"
                         android:layout_gravity="center"
-                        android:id="@+id/mode_wifi_image" />
+                        android:src="@drawable/ic_wifi" />
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/mode_button_background"
-                    android:layout_margin="2dp">
+                    android:layout_margin="2dp"
+                    android:background="@drawable/mode_button_background">
+
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_volume_up"
                         android:id="@+id/mode_ringtone_image"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center"
-                        />
+                        android:src="@drawable/ic_volume_up" />
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/mode_button_background"
-                    android:layout_margin="2dp">
+                    android:layout_margin="2dp"
+                    android:background="@drawable/mode_button_background">
+
                     <ImageView
+                        android:id="@+id/mode_call_image"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_call"
                         android:layout_gravity="center"
-                        android:id="@+id/mode_call_image" />
+                        android:src="@drawable/ic_call" />
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/mode_button_background"
-                    android:layout_margin="2dp">
+                    android:layout_margin="2dp"
+                    android:background="@drawable/mode_button_background">
+
                     <ImageView
+                        android:id="@+id/mode_message_image"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_email"
                         android:layout_gravity="center"
-                        android:id="@+id/mode_message_image" />
+                        android:src="@drawable/ic_email" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -105,61 +109,64 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="0dp"
-                >
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/mode_button_background"
-                    android:layout_margin="2dp">
+                    android:layout_margin="2dp"
+                    android:background="@drawable/mode_button_background">
+
                     <ImageView
+                        android:id="@+id/mode_media_image"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_media_volume_medium"
                         android:layout_gravity="center"
-                        android:id="@+id/mode_media_image" />
+                        android:src="@drawable/ic_media_volume_medium" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/mode_button_background"
-                    android:layout_margin="2dp">
+                    android:layout_margin="2dp"
+                    android:background="@drawable/mode_button_background">
+
                     <ImageView
+                        android:id="@+id/mode_br_image"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_brightness_high"
                         android:layout_gravity="center"
-                        android:id="@+id/mode_br_image" />
+                        android:src="@drawable/ic_brightness_high" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/mode_button_background"
-                    android:layout_margin="2dp">
+                    android:layout_margin="2dp"
+                    android:background="@drawable/mode_button_background">
+
                     <ImageView
+                        android:id="@+id/mode_bluetooth_image"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_bluetooth_yes"
                         android:layout_gravity="center"
-                        android:id="@+id/mode_bluetooth_image" />
+                        android:src="@drawable/ic_bluetooth_yes" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/mode_button_background"
-                    android:layout_margin="2dp">
+                    android:layout_margin="2dp"
+                    android:background="@drawable/mode_button_background">
+
                     <ImageView
+                        android:id="@+id/mode_lock_image"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_lock_closed"
                         android:layout_gravity="center"
-                        android:id="@+id/mode_lock_image" />
+                        android:src="@drawable/ic_lock_closed" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -168,25 +175,29 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/mode_edit_wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:visibility="gone"
-        android:id="@+id/mode_edit_wrapper">
+        android:visibility="gone">
 
-        <RelativeLayout android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5">
-            <FrameLayout android:layout_width="50dp"
+
+            <FrameLayout
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/edit_buttons_background">
+
                 <Button
+                    android:id="@+id/editModeButton"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:id="@+id/editModeButton"
-                    android:background="@drawable/ic_edit"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_edit" />
             </FrameLayout>
         </RelativeLayout>
 
@@ -195,17 +206,20 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5">
 
-            <FrameLayout android:layout_width="50dp"
+            <FrameLayout
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/edit_buttons_background">
+
                 <Button
+                    android:id="@+id/deleteModeButton"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:id="@+id/deleteModeButton"
-                    android:background="@drawable/ic_delete"
-                    android:layout_gravity="center"/>
-            </FrameLayout>>
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_delete" />
+            </FrameLayout>
+            >
         </RelativeLayout>
     </LinearLayout>
 

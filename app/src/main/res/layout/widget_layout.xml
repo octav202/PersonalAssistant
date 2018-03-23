@@ -3,10 +3,9 @@
     android:id="@+id/widget_grid"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="3dp"
-    android:layout_marginLeft="3dp"
-    android:numColumns="3"
-    android:horizontalSpacing="4dp"
-    android:verticalSpacing="4dp"
     android:layout_margin="3dp"
- />
+    android:layout_marginLeft="3dp"
+    android:layout_marginTop="3dp"
+    android:horizontalSpacing="4dp"
+    android:numColumns="3"
+    android:verticalSpacing="4dp" />

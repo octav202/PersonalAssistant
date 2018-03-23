@@ -1,333 +1,339 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alarms"
-            android:textSize="25dp"
             android:layout_margin="20dp"
-            android:textColor="@color/colorAccent" />
+            android:text="@string/settings_alarms"
+            android:textColor="@color/colorAccent"
+            android:textSize="25dp" />
 
-        <LinearLayout android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="-10dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="-10dp"
+            android:orientation="vertical">
 
-            <TextView android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Alarm Sound"
                 android:layout_margin="10dp"
+                android:text="@string/settings_alarm_sound"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:id="@+id/radioGroup"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ringtone"
                     android:id="@+id/radioButton"
-                    android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"/>
-
-                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Alarm"
+                    android:layout_marginStart="10dp"
+                    android:checked="false"
+                    android:text="@string/settings_ringtone"
+                    android:textSize="15dp" />
+
+                <RadioButton
                     android:id="@+id/radioButton2"
-                    android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"
-                    />
-
-                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notification"
-                    android:id="@+id/radioButton3"
+                    android:layout_marginStart="10dp"
                     android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"
-                    />
+                    android:text="@string/settings_alarm"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:checked="false"
+                    android:text="@string/settings_notification"
+                    android:textSize="15dp" />
 
             </RadioGroup>
 
 
-            <TextView android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Alarm volume"
                 android:layout_margin="10dp"
+                android:text="@string/settings_alarm_volume"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
             <SeekBar
+                android:id="@+id/volumeSeekBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/volumeSeekBar"
-
-                android:layout_marginLeft="20dp" />
+                android:layout_marginStart="20dp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notifications"
-            android:textSize="25dp"
             android:layout_margin="20dp"
-            android:textColor="@color/colorAccent" />
+            android:text="@string/settings_notifications"
+            android:textColor="@color/colorAccent"
+            android:textSize="25dp" />
 
-        <LinearLayout android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp">
+            android:layout_marginStart="20dp"
+            android:orientation="vertical">
 
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Type"
-                android:layout_margin="10dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                />
-
-            <RadioGroup
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
+                android:layout_margin="10dp"
+                android:text="@string/settings_type"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <RadioGroup
                 android:id="@+id/n_type_radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sound"
                     android:id="@+id/n_sound_radio"
-                    android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"/>
-
-                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vibrate"
+                    android:layout_marginStart="10dp"
+                    android:checked="false"
+                    android:text="@string/settings_sound"
+                    android:textSize="15dp" />
+
+                <RadioButton
                     android:id="@+id/n_vibrate_radio"
-                    android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp" />
-
-                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Silent"
-                    android:id="@+id/n_mute_radio"
+                    android:layout_marginStart="10dp"
                     android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"
-                    />
+                    android:text="@string/settings_vibrate"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/n_mute_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:checked="false"
+                    android:text="@string/settings_silent"
+                    android:textSize="15dp" />
 
             </RadioGroup>
 
-            <TextView android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Light Color"
                 android:layout_margin="10dp"
+                android:text="@string/settings_light_color"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-        <LinearLayout android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/light_primary_wrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/color_unselected">
 
-                <Button android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@color/colorPrimary"
+                <Button
                     android:id="@+id/light_primary"
-                    />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@color/colorPrimary" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/light_primaryDark_wrapper"
-                android:layout_marginLeft="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
                 android:background="@drawable/color_unselected">
 
-                <Button android:layout_width="30dp"
+                <Button
+                    android:id="@+id/light_primaryDark"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/colorPrimaryDark"
 
-                    android:id="@+id/light_primaryDark"/>
+                    android:background="@color/colorPrimaryDark" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/light_accent_wrapper"
-                android:layout_marginLeft="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
                 android:background="@drawable/color_unselected">
 
-                <Button android:layout_width="30dp"
+                <Button
+                    android:id="@+id/light_accent"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/colorAccent"
-                    android:id="@+id/light_accent"/>
+                    android:background="@color/colorAccent" />
 
             </FrameLayout>
 
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/light_blue_wrapper"
-                android:layout_marginLeft="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
                 android:background="@drawable/color_unselected">
-                <Button android:layout_width="30dp"
+
+                <Button
+                    android:id="@+id/light_blue"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="#0000FF"
-                    android:id="@+id/light_blue"/>
+                    android:background="#0000FF" />
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/light_red_wrapper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/light_red_wrapper"
-                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
                 android:background="@drawable/color_unselected">
-                <Button android:layout_width="30dp"
+
+                <Button
+                    android:id="@+id/light_red"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="#FF0000"
-                    android:id="@+id/light_red"/>
+                    android:background="#FF0000" />
             </FrameLayout>
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Location"
-            android:textSize="25dp"
             android:layout_margin="20dp"
-            android:textColor="@color/colorAccent" />
+            android:text="@string/settings_location"
+            android:textColor="@color/colorAccent"
+            android:textSize="25dp" />
 
-        <LinearLayout android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical">
 
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Update Interval"
-                android:layout_margin="10dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                />
-
-            <RadioGroup
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
+                android:layout_margin="10dp"
+                android:text="@string/settings_update_interval"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <RadioGroup
                 android:id="@+id/l_interval_radio_group"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1 min"
-                    android:id="@+id/l_interaval_1_radio"
-                    android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"/>
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3 min"
-                    android:id="@+id/l_interaval_3_radio"
-                    android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"
-                    />
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5 min"
-                    android:id="@+id/l_interaval_5_radio"
-                    android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"
-                    />
-
-            </RadioGroup>
-
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Map Type"
-                android:layout_margin="10dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                />
-
-            <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:id="@+id/l_map_radio_group"
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/l_interaval_1_radio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Normal"
-                    android:id="@+id/l_map_normal_radio"
+                    android:layout_marginStart="10dp"
                     android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:text="@string/settings_interval_1_min"
+                    android:textSize="15dp" />
 
                 <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hybrid"
-                android:id="@+id/l_map_hybrid_radio"
-                android:checked="false"
-                android:textSize="15dp"
-                android:layout_marginLeft="10dp"
-                />
-                <RadioButton
+                    android:id="@+id/l_interaval_3_radio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Satellite"
-                    android:id="@+id/l_map_satellite_radio"
+                    android:layout_marginStart="10dp"
                     android:checked="false"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="10dp"
-                    />
+                    android:text="@string/settings_interval_3_min"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/l_interaval_5_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:checked="false"
+                    android:text="@string/settings_interval_5_min"
+                    android:textSize="15dp" />
 
             </RadioGroup>
-            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/settings_map_type"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/l_map_radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/l_map_normal_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:checked="false"
+                    android:text="@string/mode_normal"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/l_map_hybrid_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:checked="false"
+                    android:text="@string/settings_map_type_hybrid"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/l_map_satellite_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:checked="false"
+                    android:text="@string/settings_map_type_satellite"
+                    android:textSize="15dp" />
+
+            </RadioGroup>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -41,13 +41,13 @@ public class ModesListFragment extends Fragment {
         db = new DataBase(getActivity().openOrCreateDatabase("MyDataBase", Context.MODE_PRIVATE, null));
         modeList = db.getModes();
 
-        adapter = new ModesAdapter(getActivity(),R.layout.mode_grid_item, modeList);
+        adapter = new ModesAdapter(getActivity(), R.layout.mode_grid_item, modeList);
         gridView.setAdapter(adapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddModeDialog addMode = AddModeDialog.newInstance(null,false);
+                AddModeDialog addMode = AddModeDialog.newInstance(null, false);
                 addMode.show(getFragmentManager(), "add_activity_fragment");
             }
         });
@@ -57,19 +57,18 @@ public class ModesListFragment extends Fragment {
         return view;
     }
 
-    public  void addMode(ModeObject mode,boolean isEditing){
+    public void addMode(ModeObject mode, boolean isEditing) {
 
-        if(isEditing) {
-            for (int i =0;i<modeList.size();i++) {
+        if (isEditing) {
+            for (int i = 0; i < modeList.size(); i++) {
                 ModeObject m = modeList.get(i);
-                if(mode.id == m.id){
+                if (mode.id == m.id) {
                     modeList.set(i, mode);
                     db.updateMode(m, mode);
                     adapter.notifyDataSetChanged();
                 }
             }
-        }
-        else{
+        } else {
             modeList.add(mode);
             adapter.notifyDataSetChanged();
             db.insertMode(mode);
@@ -80,22 +79,22 @@ public class ModesListFragment extends Fragment {
 
     //Update Widget
 
-    public void updateWidget(){
+    public void updateWidget() {
 
         RemoteViews remoteViews = new RemoteViews(getActivity().getPackageName(), R.layout.widget_layout);
-        ComponentName thisWidget = new ComponentName( getActivity(), WidgetProvider.class );
-        AppWidgetManager.getInstance( getActivity() ).updateAppWidget( thisWidget, remoteViews );
-        int[] allWidgetIds = AppWidgetManager.getInstance( getActivity() ).getAppWidgetIds(thisWidget);
-        AppWidgetManager.getInstance( getActivity() ).notifyAppWidgetViewDataChanged(allWidgetIds, R.id.widget_grid );
+        ComponentName thisWidget = new ComponentName(getActivity(), WidgetProvider.class);
+        AppWidgetManager.getInstance(getActivity()).updateAppWidget(thisWidget, remoteViews);
+        int[] allWidgetIds = AppWidgetManager.getInstance(getActivity()).getAppWidgetIds(thisWidget);
+        AppWidgetManager.getInstance(getActivity()).notifyAppWidgetViewDataChanged(allWidgetIds, R.id.widget_grid);
     }
 
     // Edit Mode
 
-    public void enterEditMode(){
+    public void enterEditMode() {
         adapter.enterEditMode();
     }
 
-    public void exitEditMode(){
+    public void exitEditMode() {
         adapter.exitEditMode();
     }
 }

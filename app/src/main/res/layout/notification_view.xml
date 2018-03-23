@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/alarm_list_item">
+    android:background="@drawable/alarm_list_item"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/notification_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title:"
-        android:textSize="32dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
+        android:text="@string/not_title_label"
         android:textColor="#000000"
-        android:textStyle="bold"
-        android:id="@+id/notification_title"/>
+        android:textSize="32dp"
+        android:textStyle="bold" />
 
     <View
         android:layout_width="0dp"
@@ -28,29 +28,29 @@
         android:src="@drawable/ic_event" />
 
     <TextView
+        android:id="@+id/notification_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Message"
-        android:textSize="25dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:id="@+id/notification_message"
+        android:text="@string/not_message"
         android:textAlignment="center"
-        android:visibility="gone"/>
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
     <TextView
+        android:id="@+id/nv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
-        android:textSize="20dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
+        android:text="@string/not_profile"
+        android:textAlignment="center"
         android:textColor="#000000"
-        android:textStyle="bold"
-        android:id="@+id/nv_message"
-        android:textAlignment="center" />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <View
         android:layout_width="0dp"
@@ -58,84 +58,93 @@
         android:layout_weight="1" />
 
 
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+    <LinearLayout
         android:id="@+id/nv_mode_wrapper"
-        android:layout_marginBottom="20dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
         <TextView
+            android:id="@+id/nv_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Message"
-            android:textSize="20dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:text="@string/not_message"
+            android:textAlignment="center"
             android:textColor="#000000"
-            android:textStyle="bold"
-            android:id="@+id/nv_mode"
-            android:textAlignment="center" />
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-        <LinearLayout android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
             android:padding="3dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="0dp">
+                android:layout_marginBottom="0dp"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/nfc_icon_background"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:background="@drawable/nfc_icon_background">
+
                     <ImageView
+                        android:id="@+id/nv_wifi_image"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_wifi"
                         android:layout_gravity="center"
-                        android:id="@+id/nv_wifi_image" />
+                        android:src="@drawable/ic_wifi" />
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/nfc_icon_background"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:background="@drawable/nfc_icon_background">
+
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_volume_up"
                         android:id="@+id/nv_ringtone_image"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
-                        />
+                        android:src="@drawable/ic_volume_up" />
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/nfc_icon_background"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:background="@drawable/nfc_icon_background">
+
                     <ImageView
+                        android:id="@+id/nv_call_image"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_call"
                         android:layout_gravity="center"
-                        android:id="@+id/nv_call_image" />
+                        android:src="@drawable/ic_call" />
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/nfc_icon_background"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:background="@drawable/nfc_icon_background">
+
                     <ImageView
+                        android:id="@+id/nv_message_image"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_email"
                         android:layout_gravity="center"
-                        android:id="@+id/nv_message_image" />
+                        android:src="@drawable/ic_email" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -143,60 +152,64 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="0dp">
+                android:layout_marginBottom="0dp"
+                android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/nfc_icon_background"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:background="@drawable/nfc_icon_background">
+
                     <ImageView
+                        android:id="@+id/nv_media_image"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_media_volume_medium"
                         android:layout_gravity="center"
-                        android:id="@+id/nv_media_image" />
+                        android:src="@drawable/ic_media_volume_medium" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/nfc_icon_background"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:background="@drawable/nfc_icon_background">
+
                     <ImageView
+                        android:id="@+id/nv_br_image"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_brightness_high"
                         android:layout_gravity="center"
-                        android:id="@+id/nv_br_image" />
+                        android:src="@drawable/ic_brightness_high" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/nfc_icon_background"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:background="@drawable/nfc_icon_background">
+
                     <ImageView
+                        android:id="@+id/nv_bluetooth_image"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_bluetooth_yes"
                         android:layout_gravity="center"
-                        android:id="@+id/nv_bluetooth_image" />
+                        android:src="@drawable/ic_bluetooth_yes" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/nfc_icon_background"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:background="@drawable/nfc_icon_background">
+
                     <ImageView
+                        android:id="@+id/nv_lock_image"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_lock_closed"
                         android:layout_gravity="center"
-                        android:id="@+id/nv_lock_image" />
+                        android:src="@drawable/ic_lock_closed" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -206,13 +219,12 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/notification_view_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/notification_view_button"
-        android:textSize="25dp"
         android:layout_margin="15dp"
         android:background="@color/colorPrimary"
+        android:text="@string/ok"
         android:textColor="#FFFFFF"
-        android:text="OK"
-        />
+        android:textSize="25dp" />
 </LinearLayout>

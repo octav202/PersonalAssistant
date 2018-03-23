@@ -2,32 +2,33 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:background="?attr/colorPrimaryDark"
-    android:padding="16dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:gravity="bottom"
     android:orientation="vertical"
-    android:gravity="bottom">
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <LinearLayout android:orientation="horizontal"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <ImageView android:layout_width="40dp"
+        <ImageView
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/ic_launcher_pa"
             android:layout_gravity="center_vertical"
-            android:scaleType="centerCrop"/>
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher_pa" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Menu"
-            android:textSize="21dp"
-            android:textColor="@android:color/white"
+            android:layout_gravity="center_vertical"
+            android:text="@string/nav_menu"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:layout_gravity="center_vertical"/>
-        </LinearLayout>
-
+            android:textColor="@android:color/white"
+            android:textSize="21dp" />
+    </LinearLayout>
 
 
 </LinearLayout>

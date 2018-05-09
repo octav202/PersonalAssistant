@@ -2,7 +2,9 @@ package com.example.octav.proiect.Utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,6 +42,8 @@ import com.example.octav.proiect.Location.LocationService;
 import com.example.octav.proiect.R;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,AddAlarmDialog.OnSetTimeInterface,
@@ -106,6 +110,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 */
 
        // initTesting();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //queryModesContentProvider();
+    }
+
+    private void queryModesContentProvider() {
+
+        String PROVIDER_NAME = "com.example.octav.proiect";
+        String URL = "content://" + PROVIDER_NAME + "/modes";
+
+        Uri modes = Uri.parse(URL);
+
+        Cursor cursor = getContentResolver().query(modes, null, null, null, null);
+
+        List<ModeObject> modeList = new ArrayList<ModeObject>();
+        if (cursor != null) {
+            cursor.moveToFirst();
+            while (cursor.isAfterLast() == false) {
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String callMessage = cursor.getString(2);
+                String smsMessage = cursor.getString(3);
+                boolean wifi = cursor.getInt(4) > 0;
+                String ringtone = cursor.getString(5);
+                String media = cursor.getString(6);
+                String image = cursor.getString(7);
+                String brightness = cursor.getString(8);
+                String bluetooth = cursor.getString(9);
+                String lockscreen = cursor.getString(10);
+
+                ModeObject m = new ModeObject(id, name, callMessage, smsMessage, wifi, ringtone, media, image, brightness, bluetooth, lockscreen);
+                modeList.add(m);
+                cursor.moveToNext();
+            }
+            Toast.makeText(getApplicationContext(), "Size " + modeList.size(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     //Select Tabs

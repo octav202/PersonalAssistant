@@ -149,6 +149,21 @@
             </intent-filter>
         </receiver>
 
+
+        <!-- Ndroid -->
+        <receiver android:name=".Utils.StatusBarReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.ndroid.ndroidstatusbar" />
+            </intent-filter>
+        </receiver>
+
+        <provider android:name=".Utils.ModesContentProvider"
+            android:authorities="com.example.octav.proiect"
+            android:exported="true"
+            android:grantUriPermissions="true"/>
+
     </application>
 
 </manifest>

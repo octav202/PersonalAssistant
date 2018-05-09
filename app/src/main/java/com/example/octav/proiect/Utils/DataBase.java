@@ -252,6 +252,11 @@ public final class DataBase {
         return modeList;
     }
 
+    public Cursor getAllModes() {
+        Cursor cursor = db.rawQuery("Select * from MODES", null);
+        return cursor;
+    }
+
     public void deleteTableModes() {
         db.delete(MODES_TABLE_NAME, null, null);
     }

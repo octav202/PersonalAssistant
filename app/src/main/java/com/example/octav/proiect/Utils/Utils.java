@@ -13,10 +13,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.RemoteViews;
 import android.widget.Toast;
+import android.app.NotificationManager;
+import static android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS;
 
 import com.example.octav.proiect.Modes.ModeObject;
 import com.example.octav.proiect.R;
@@ -96,6 +99,9 @@ public class Utils {
         SharedPreferences.Editor editor = context.getSharedPreferences(SHARED_NAME, Context.MODE_PRIVATE).edit();
 
         if (mode != null) {
+
+            Log.d(TAG, mode.toString());
+
             editor.putInt(ID_KEY, mode.id);
             editor.putString(NAME_KEY, mode.name);
             editor.putString(CALL_MESSAGE_KEY, mode.callMessage);
@@ -108,12 +114,34 @@ public class Utils {
             //Ringtone
             AudioManager manager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
+            // Request Access to bypass "Do not disturb" mode
+            NotificationManager n = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M
+                    && !n.isNotificationPolicyAccessGranted()) {
+                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                context.startActivity(intent);
+                return;
+            }
+
             if (mode.ringtone.equals(MUTE))
                 manager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-            if (mode.ringtone.equals(VIBRATE))
-                manager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-            if (mode.ringtone.equals(NORMAL))
-                manager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+
+            if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                NotificationManager mNotificationManager = (NotificationManager) context.
+                        getSystemService(Context.NOTIFICATION_SERVICE);
+                mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE);
+            } else {
+                if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                    NotificationManager mNotificationManager = (NotificationManager) context.
+                            getSystemService(Context.NOTIFICATION_SERVICE);
+                    mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL);
+                }
+
+                if (mode.ringtone.equals(VIBRATE))
+                    manager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                if (mode.ringtone.equals(NORMAL))
+                    manager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            }
 
             //Media
 

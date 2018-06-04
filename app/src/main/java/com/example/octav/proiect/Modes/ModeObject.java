@@ -86,4 +86,20 @@ public class ModeObject implements Parcelable{
         lockScreen = in.readString();
     }
 
+    @Override
+    public String toString() {
+        return "ModeObject{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", callMessage='" + callMessage + '\'' +
+                ", smsMessage='" + smsMessage + '\'' +
+                ", wifi=" + wifi +
+                ", ringtone='" + ringtone + '\'' +
+                ", mediaVolume='" + mediaVolume + '\'' +
+                ", brightness='" + brightness + '\'' +
+                ", bluetooth='" + bluetooth + '\'' +
+                ", lockScreen='" + lockScreen + '\'' +
+                ", image='" + image + '\'' +
+                '}';
+    }
 }

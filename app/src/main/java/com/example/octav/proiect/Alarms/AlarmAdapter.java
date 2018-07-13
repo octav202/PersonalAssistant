@@ -204,8 +204,6 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
                     if(data.get(i).id == newAlarm.id)
                         data.set(i,newAlarm);
                 }
-                filterAlarms(selectedDay);
-                notifyDataSetChanged();
 
                 db.updateAlarm(alarm, newAlarm);
                 //Update pending intents
@@ -355,9 +353,9 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
         if(calSet.getTimeInMillis() < System.currentTimeMillis()) {
             calSet.add(Calendar.MILLISECOND,1000 * 3600 * 24 * 7);//Add a week
         }
-
+        int week = 1000 * 3600 * 24 * 7;
         if(alarm.repeat){
-            manager.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(), 2 * 60 * 1000, operation);
+            manager.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(), week, operation);
             Log.w("ADD", "ADDED REPEAT ALARM:" + id+" ("+alarm.hour+":"+alarm.minute+")");
         }
         else{
@@ -404,8 +402,10 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
                 calSet.add(Calendar.MILLISECOND,1000 * 3600 * 24 * 7);//Add a week
             }
 
+            int week = 1000 * 3600 * 24 * 7;
+
             if(alarm.repeat){
-                manager.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(), 2 * 60 * 1000, operation);
+                manager.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(), week, operation);
                 Log.w("ADD", "ADDED REPEAT ALARM:" + id+" ("+alarm.hour+":"+alarm.minute+")");
             }
             else{

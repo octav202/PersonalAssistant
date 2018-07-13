@@ -354,8 +354,9 @@ public class AddAlarmDialog extends DialogFragment {
                 calSet.add(Calendar.MILLISECOND, 1000 * 3600 * 24 * 7);//Add a week
             }
 
+            int week = 1000 * 3600 * 24 * 7;
             if (alarm.repeat) {
-                manager.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(), 2 * 60 * 1000, operation);
+                manager.setRepeating(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(), week, operation);
                 Log.w("ADD", "ADDED REPEAT ALARM:" + id + " (" + alarm.hour + ":" + alarm.minute + ")");
             } else {
                 manager.set(AlarmManager.RTC_WAKEUP, calSet.getTimeInMillis(), operation);

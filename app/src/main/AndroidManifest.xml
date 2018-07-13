@@ -71,7 +71,8 @@
         <activity
             android:name="com.example.octav.proiect.Alarms.AlarmView"
             android:label="Alarm"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="alarm_view" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -82,7 +83,8 @@
         <activity
             android:name="com.example.octav.proiect.Notifications.NotificationView"
             android:label="Notification"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="notification_view" />
                 <category android:name="android.intent.category.DEFAULT" />

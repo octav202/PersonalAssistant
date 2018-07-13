@@ -106,7 +106,9 @@ public class AlarmView extends Activity {
 
         //Extract set mode
         DataBase db = new DataBase(AlarmView.this.openOrCreateDatabase("MyDataBase", Context.MODE_PRIVATE, null));
-        db.deleteAlarm(alarm);
+        if (!alarm.repeat) {
+            db.deleteAlarm(alarm);
+        }
 
         String modeName = "";
         ModeObject mode = null;

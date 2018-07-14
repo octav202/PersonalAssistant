@@ -37,7 +37,12 @@
                         android:layout_margin="20dp"
                         android:text="@string/mark_title"
                         android:textColor="@color/colorAccent"
-                        android:textSize="21dp" />
+                        android:textSize="22dp"
+                        android:shadowColor="@android:color/black"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        />
 
                     <EditText
                         android:id="@+id/activity_title"
@@ -74,13 +79,23 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="10dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="@string/mode_call_handler"
                 android:textColor="@color/colorAccent"
-                android:textSize="21dp" />
+                android:textSize="22dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                />
 
             <CheckBox
                 android:id="@+id/call_checkbox"
@@ -89,7 +104,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="-5dp"
                 android:text="@string/mode_reply_with_sms"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:buttonTint="@color/colorPrimary"/>
 
             <EditText
                 android:id="@+id/call_message_text"
@@ -99,13 +115,22 @@
                 android:layout_marginRight="20dp"
                 android:hint="@string/mode_message_hint" />
 
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="10dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="@string/sms_handler"
                 android:textColor="@color/colorAccent"
-                android:textSize="21dp" />
+                android:textSize="22dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
 
             <CheckBox
                 android:id="@+id/sms_checkbox"
@@ -114,7 +139,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="-5dp"
                 android:text="@string/mode_reply_with_sms"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:buttonTint="@color/colorPrimary"/>
 
             <EditText
                 android:id="@+id/sms_message_text"
@@ -124,6 +150,10 @@
                 android:layout_marginRight="20dp"
                 android:hint="@string/mode_message_hint" />
 
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -131,7 +161,11 @@
                 android:layout_margin="20dp"
                 android:text="@string/mode_wifi_data"
                 android:textColor="@color/colorAccent"
-                android:textSize="21dp" />
+                android:textSize="22dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -145,9 +179,15 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/mode_wifi"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
             </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -155,7 +195,11 @@
                 android:layout_margin="20dp"
                 android:text="@string/settings_ringtone"
                 android:textColor="@color/colorAccent"
-                android:textSize="21dp" />
+                android:textSize="22dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -169,7 +213,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/mode_normal"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
                 <CheckBox
                     android:id="@+id/volume_vibrate_checkbox"
@@ -178,7 +223,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/settings_vibrate"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
                 <CheckBox
                     android:id="@+id/volume_mute_checkbox"
@@ -187,8 +233,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/mode_mute"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
             </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -196,7 +248,11 @@
                 android:layout_margin="20dp"
                 android:text="@string/mode_media_volume"
                 android:textColor="@color/colorAccent"
-                android:textSize="21dp" />
+                android:textSize="22dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -210,7 +266,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/mode_min"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
                 <CheckBox
                     android:id="@+id/media_normal_check"
@@ -219,7 +276,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/mode_medium"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
                 <CheckBox
                     android:id="@+id/media_max_check"
@@ -228,8 +286,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/mode_max"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
             </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -237,7 +301,11 @@
                 android:layout_margin="20dp"
                 android:text="@string/mode_brightness"
                 android:textColor="@color/colorAccent"
-                android:textSize="21dp" />
+                android:textSize="22dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -251,7 +319,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/mode_low"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
                 <CheckBox
                     android:id="@+id/br_medium_checkbox"
@@ -260,7 +329,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/mode_medium"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
                 <CheckBox
                     android:id="@+id/br_high_checkbox"
@@ -269,8 +339,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/mode_high"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
             </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -278,7 +354,11 @@
                 android:layout_margin="20dp"
                 android:text="@string/mode_bluetooth"
                 android:textColor="@color/colorAccent"
-                android:textSize="21dp" />
+                android:textSize="22dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -292,7 +372,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/off"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
                 <CheckBox
                     android:id="@+id/bluetooth_yes_check"
@@ -301,10 +382,15 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/on"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
             </LinearLayout>
 
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -312,7 +398,11 @@
                 android:layout_margin="20dp"
                 android:text="@string/mode_lockscreen"
                 android:textColor="@color/colorAccent"
-                android:textSize="21dp" />
+                android:textSize="22dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -326,7 +416,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/enabled"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
 
                 <CheckBox
                     android:id="@+id/lock_disabled_check"
@@ -335,8 +426,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="-5dp"
                     android:text="@string/disabled"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:buttonTint="@color/colorPrimary"/>
             </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="10dp"/>
 
             <Button
                 android:id="@+id/mode_save_button"

@@ -21,7 +21,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import static com.example.octav.proiect.Utils.Constants.MODE_EXTRA_PARCELABLE;
-import static com.example.octav.proiect.Utils.Constants.NOTIFICATION_EXTRA_PARCELABLE;
+import static com.example.octav.proiect.Utils.Constants.NOTIFICATION_EXTRA_ID;
 import static com.example.octav.proiect.Utils.Constants.NOTIFICATION_TYPE;
 import static com.example.octav.proiect.Utils.Constants.NOT_TYPE_SILENT;
 import static com.example.octav.proiect.Utils.Constants.NOT_TYPE_SOUND;
@@ -33,12 +33,19 @@ public class NotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        NotificationObject n = intent.getParcelableExtra(NOTIFICATION_EXTRA_PARCELABLE);
-        Boolean reminder = intent.getExtras().getBoolean(REMINDER);
 
-        //Delete Notification from database
+        NotificationObject n = null;
+        int notificationId = intent.getIntExtra(NOTIFICATION_EXTRA_ID ,0);
         DataBase db = new DataBase(context.openOrCreateDatabase("MyDataBase", Context.MODE_PRIVATE, null));
-        db.deleteNotification(n);
+
+        for (NotificationObject not : db.getNotifications()) {
+            if (not.id == notificationId) {
+                n = not;
+                break;
+            }
+        }
+
+        Boolean reminder = intent.getExtras().getBoolean(REMINDER);
 
         //Extract set mode
 
@@ -56,7 +63,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         }
 
         Intent notificationIntent = new Intent(context, NotificationView.class);
-        notificationIntent.putExtra(NOTIFICATION_EXTRA_PARCELABLE, n);
+        notificationIntent.putExtra(NOTIFICATION_EXTRA_ID, n.id);
         if (currentMode != null)
             notificationIntent.putExtra(MODE_EXTRA_PARCELABLE, currentMode);
         notificationIntent.putExtra(REMINDER, reminder);

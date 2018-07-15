@@ -119,6 +119,7 @@ public final class DataBase {
         values.put(DAYS_KEY, alarm.days);
         values.put(REPEAT_KEY, alarm.repeat);
         values.put(NAME_KEY, alarm.name);
+        values.put(MODE_KEY, alarm.mode);
         db.insert(ALARMS_TABLE_NAME, null, values);
     }
 
@@ -133,6 +134,7 @@ public final class DataBase {
         values.put(DAYS_KEY, newAlarm.days);
         values.put(NAME_KEY, newAlarm.name);
         values.put(REPEAT_KEY, newAlarm.repeat);
+        values.put(MODE_KEY, newAlarm.mode);
         db.update(ALARMS_TABLE_NAME, values, "id=" + oldAlarm.id, null);
     }
 
@@ -195,6 +197,7 @@ public final class DataBase {
         values.put(MONTH_KEY, notification.month);
         values.put(YEAR_KEY, notification.year);
         values.put(REMINDER_KEY, notification.reminder);
+        values.put(MODE_KEY, notification.mode);
         values.put(MESSAGE_KEY, notification.message);
 
         db.insert(NOTIFICATIONS_TABLE_NAME, null, values);

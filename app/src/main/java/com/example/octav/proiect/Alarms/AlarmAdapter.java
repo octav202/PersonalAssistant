@@ -28,7 +28,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import static com.example.octav.proiect.Utils.Constants.ALARM_ACTION;
-import static com.example.octav.proiect.Utils.Constants.ALARM_EXTRA_PARCELABLE;
+import static com.example.octav.proiect.Utils.Constants.ALARM_EXTRA_ID;
 
 public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
 
@@ -312,7 +312,7 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
             Log.w("CANCEL", "CANCELED ALARM:" + id+" ("+alarm.hour+":"+alarm.minute+")");
             AlarmManager manager = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
             Intent i = new Intent(ALARM_ACTION);
-            i.putExtra(ALARM_EXTRA_PARCELABLE,alarm);
+            i.putExtra(ALARM_EXTRA_ID,alarm.id);
             PendingIntent pendingIntent = PendingIntent.getActivity(getContext(),
                    id, i, PendingIntent.FLAG_UPDATE_CURRENT);
             pendingIntent.cancel();
@@ -327,7 +327,7 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
         Log.w("CANCEL", "CANCELED ALARM:" + id+" ("+alarm.hour+":"+alarm.minute+")");
         AlarmManager manager = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
         Intent i = new Intent(ALARM_ACTION);
-        i.putExtra(ALARM_EXTRA_PARCELABLE,alarm);
+        i.putExtra(ALARM_EXTRA_ID,alarm.id);
         PendingIntent pendingIntent = PendingIntent.getActivity(getContext(),
                 id, i, PendingIntent.FLAG_UPDATE_CURRENT);
         pendingIntent.cancel();
@@ -347,7 +347,7 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
         calSet.set(Calendar.SECOND, 0);
         calSet.set(Calendar.MILLISECOND, 0);
         Intent i = new Intent(ALARM_ACTION);
-        i.putExtra(ALARM_EXTRA_PARCELABLE, alarm);
+        i.putExtra(ALARM_EXTRA_ID, alarm.id);
         PendingIntent operation = PendingIntent.getActivity(getContext(), id, i, Intent.FLAG_ACTIVITY_NEW_TASK);
 
         if(calSet.getTimeInMillis() < System.currentTimeMillis()) {
@@ -380,7 +380,7 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
 
             AlarmManager manager = (AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
             Intent oldIntent = new Intent(ALARM_ACTION);
-            oldIntent.putExtra(ALARM_EXTRA_PARCELABLE, alarm);
+            oldIntent.putExtra(ALARM_EXTRA_ID, alarm.id);
             PendingIntent pendingIntent = PendingIntent.getActivity(getContext(),
                     id, oldIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             pendingIntent.cancel();
@@ -395,7 +395,7 @@ public class AlarmAdapter extends ArrayAdapter<AlarmObject> {
             calSet.set(Calendar.SECOND, 0);
             calSet.set(Calendar.MILLISECOND, 0);
             Intent i = new Intent(ALARM_ACTION);
-            i.putExtra(ALARM_EXTRA_PARCELABLE, alarm);
+            i.putExtra(ALARM_EXTRA_ID, alarm.id);
             PendingIntent operation = PendingIntent.getActivity(getContext(), id, i, Intent.FLAG_ACTIVITY_NEW_TASK);
 
             if(calSet.getTimeInMillis() < System.currentTimeMillis()) {

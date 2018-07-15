@@ -31,7 +31,7 @@ import java.util.Calendar;
 import com.example.octav.proiect.Modes.ModePickerDialog;
 import com.example.octav.proiect.R;
 
-import static com.example.octav.proiect.Utils.Constants.NOTIFICATION_EXTRA_PARCELABLE;
+import static com.example.octav.proiect.Utils.Constants.NOTIFICATION_EXTRA_ID;
 import static com.example.octav.proiect.Utils.Constants.REMINDER;
 
 
@@ -404,7 +404,7 @@ public class AddNotificationDialog extends DialogFragment {
         if(notification.reminder !=0) {
             Intent reminderIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
             reminderIntent.addCategory("android.intent.category.DEFAULT");
-            reminderIntent.putExtra(NOTIFICATION_EXTRA_PARCELABLE, notification);
+            reminderIntent.putExtra(NOTIFICATION_EXTRA_ID, notification.id);
             reminderIntent.putExtra(REMINDER,true);
             PendingIntent broadcast = PendingIntent.getBroadcast(getActivity(), -notification.id, reminderIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             Calendar calSet = Calendar.getInstance();
@@ -422,7 +422,7 @@ public class AddNotificationDialog extends DialogFragment {
 
         Intent notificationIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
         notificationIntent.addCategory("android.intent.category.DEFAULT");
-        notificationIntent.putExtra(NOTIFICATION_EXTRA_PARCELABLE, notification);
+        notificationIntent.putExtra(NOTIFICATION_EXTRA_ID, notification.id);
         notificationIntent.putExtra(REMINDER,false);
         PendingIntent broadcast = PendingIntent.getBroadcast(getActivity(), notification.id, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         Calendar calSet = Calendar.getInstance();

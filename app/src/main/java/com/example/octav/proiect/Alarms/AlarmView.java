@@ -6,6 +6,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,7 +29,7 @@ import com.example.octav.proiect.Utils.Utils;
 
 import java.util.List;
 
-import static com.example.octav.proiect.Utils.Constants.ALARM_EXTRA_PARCELABLE;
+import static com.example.octav.proiect.Utils.Constants.ALARM_EXTRA_ID;
 import static com.example.octav.proiect.Utils.Constants.ALARM_SOUND;
 import static com.example.octav.proiect.Utils.Constants.ALARM_TYPE_ALARM;
 import static com.example.octav.proiect.Utils.Constants.ALARM_TYPE_NOTIFICATION;
@@ -43,6 +45,7 @@ import static com.example.octav.proiect.Utils.Constants.MUTE;
 import static com.example.octav.proiect.Utils.Constants.NORMAL;
 import static com.example.octav.proiect.Utils.Constants.OFF;
 import static com.example.octav.proiect.Utils.Constants.ON;
+import static com.example.octav.proiect.Utils.Constants.TAG;
 import static com.example.octav.proiect.Utils.Constants.VIBRATE;
 
 /**
@@ -99,120 +102,132 @@ public class AlarmView extends Activity {
         bluetooth = (ImageView) findViewById(R.id.av_bluetooth_image);
         lockscreen = (ImageView) findViewById(R.id.av_lock_image);
 
-        AlarmObject alarm = (AlarmObject) getIntent().getExtras().getParcelable(ALARM_EXTRA_PARCELABLE);
-
-        titleTextView.setText(alarm.id + ". " + alarm.name);
-        timeTextView.setText(alarm.hour + ":" + alarm.minute);
-
-        //Extract set mode
+        AlarmObject alarm = null;
         DataBase db = new DataBase(AlarmView.this.openOrCreateDatabase("MyDataBase", Context.MODE_PRIVATE, null));
-        if (!alarm.repeat) {
-            db.deleteAlarm(alarm);
-        }
-
-        String modeName = "";
-        ModeObject mode = null;
-
-        List<ModeObject> modeList = db.getModes();
-        for (ModeObject m : modeList) {
-            if (m.id == alarm.mode) {
-                Utils.setMode(AlarmView.this, m, false);
-                modeName = m.name;
-                mode = m;
+        int alarmId = getIntent().getIntExtra(ALARM_EXTRA_ID,0);
+        for (AlarmObject a:db.getAlarms()) {
+            if (a.id == alarmId) {
+                alarm = a;
                 break;
             }
         }
 
-        if (mode == null) {
-            modeWrapper.setVisibility(View.GONE);
-        } else {
-            modeWrapper.setVisibility(View.VISIBLE);
+        if (alarm != null) {
+            titleTextView.setText(alarm.id + ". " + alarm.name);
+            timeTextView.setText(alarm.hour + ":" + alarm.minute);
 
-            modeText.setText("Switched to " + mode.name);
-            if (!mode.wifi)
-                wifi.setAlpha(0.2f);
-            else
-                wifi.setAlpha(1f);
-
-            if (mode.ringtone.equals("")) {
-                ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_ringtone));
-                ringtone.setAlpha(0.4f);
-            }
-            if (mode.ringtone.equals(NORMAL))
-                ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_ringtone));
-            if (mode.ringtone.equals(VIBRATE))
-                ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_vibrate));
-            if (mode.ringtone.equals(MUTE)) {
-                ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_ringtone));
-                ringtone.setAlpha(0.4f);
+            if (!alarm.repeat) {
+                db.deleteAlarm(alarm);
             }
 
+            Log.d(TAG, "MODE : " + alarm.mode);
 
-            if (mode.callMessage.equals(""))
-                call.setAlpha(0.2f);
-            else
-                call.setAlpha(1f);
+            String modeName = "";
+            ModeObject mode = null;
 
-            if (mode.smsMessage.equals(""))
-                message.setAlpha(0.2f);
-            else
-                message.setAlpha(1f);
-
-
-            //Media
-
-            if (mode.mediaVolume.equals(MIN))
-                media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_min));
-            if (mode.mediaVolume.equals(MEDIUM))
-                media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_medium));
-            if (mode.mediaVolume.equals(MAX))
-                media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_max));
-            if (mode.mediaVolume.equals("")) {
-                media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_medium));
-                media.setAlpha(0.4f);
+            List<ModeObject> modeList = db.getModes();
+            for (ModeObject m : modeList) {
+                if (m.id == alarm.mode) {
+                    Utils.setMode(AlarmView.this, m, false);
+                    modeName = m.name;
+                    mode = m;
+                    break;
+                }
             }
 
-            //Brightness
+            if (mode == null) {
+                modeWrapper.setVisibility(View.GONE);
+            } else {
+                modeWrapper.setVisibility(View.VISIBLE);
 
-            if (mode.brightness.equals(LOW))
-                brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_low));
-            if (mode.brightness.equals(MEDIUM))
-                brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_medium));
-            if (mode.brightness.equals(HIGH))
-                brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_high));
-            if (mode.brightness.equals("")) {
-                brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_medium));
-                brightness.setAlpha(0.4f);
+                modeText.setText("Switched to " + mode.name);
+                if (!mode.wifi)
+                    wifi.setAlpha(0.2f);
+                else
+                    wifi.setAlpha(1f);
+
+                if (mode.ringtone.equals("")) {
+                    ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_ringtone));
+                    ringtone.setAlpha(0.4f);
+                }
+                if (mode.ringtone.equals(NORMAL))
+                    ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_ringtone));
+                if (mode.ringtone.equals(VIBRATE))
+                    ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_vibrate));
+                if (mode.ringtone.equals(MUTE)) {
+                    ringtone.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_ringtone));
+                    ringtone.setAlpha(0.4f);
+                }
+
+
+                if (mode.callMessage.equals(""))
+                    call.setAlpha(0.2f);
+                else
+                    call.setAlpha(1f);
+
+                if (mode.smsMessage.equals(""))
+                    message.setAlpha(0.2f);
+                else
+                    message.setAlpha(1f);
+
+
+                //Media
+
+                if (mode.mediaVolume.equals(MIN))
+                    media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_min));
+                if (mode.mediaVolume.equals(MEDIUM))
+                    media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_medium));
+                if (mode.mediaVolume.equals(MAX))
+                    media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_max));
+                if (mode.mediaVolume.equals("")) {
+                    media.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_media_volume_medium));
+                    media.setAlpha(0.4f);
+                }
+
+                //Brightness
+
+                if (mode.brightness.equals(LOW))
+                    brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_low));
+                if (mode.brightness.equals(MEDIUM))
+                    brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_medium));
+                if (mode.brightness.equals(HIGH))
+                    brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_high));
+                if (mode.brightness.equals("")) {
+                    brightness.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_brightness_medium));
+                    brightness.setAlpha(0.4f);
+                }
+
+                //Bluetooth
+
+                if (mode.bluetooth.equals(ON))
+                    bluetooth.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_bluetooth_yes));
+                if (mode.bluetooth.equals(OFF))
+                    bluetooth.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_bluetooth_no));
+                if (mode.bluetooth.equals("")) {
+                    bluetooth.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_bluetooth_yes));
+                    bluetooth.setAlpha(0.4f);
+                }
+
+                //Lockscreen
+
+                if (mode.lockScreen.equals(ON))
+                    lockscreen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_lock_closed));
+                if (mode.lockScreen.equals(OFF))
+                    lockscreen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_lock_open));
+                if (mode.lockScreen.equals("")) {
+                    lockscreen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_lock_closed));
+                    lockscreen.setAlpha(0.4f);
+                }
             }
 
-            //Bluetooth
+            if (modeName.equals("")) {
 
-            if (mode.bluetooth.equals(ON))
-                bluetooth.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_bluetooth_yes));
-            if (mode.bluetooth.equals(OFF))
-                bluetooth.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_bluetooth_no));
-            if (mode.bluetooth.equals("")) {
-                bluetooth.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_bluetooth_yes));
-                bluetooth.setAlpha(0.4f);
+            } else {
+                messageTextView.setText("Switched to " + modeName + " mode");
             }
 
-            //Lockscreen
-
-            if (mode.lockScreen.equals(ON))
-                lockscreen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_lock_closed));
-            if (mode.lockScreen.equals(OFF))
-                lockscreen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_lock_open));
-            if (mode.lockScreen.equals("")) {
-                lockscreen.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_lock_closed));
-                lockscreen.setAlpha(0.4f);
-            }
         }
 
-        if (modeName.equals("")) {
-
-        } else {
-            messageTextView.setText("Switched to " + modeName + " mode");
-        }
         //Get Settings
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);

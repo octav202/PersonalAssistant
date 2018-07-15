@@ -1,8 +1,10 @@
 package com.example.octav.proiect.Notifications;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +13,10 @@ import android.widget.TextView;
 
 import com.example.octav.proiect.Modes.ModeObject;
 import com.example.octav.proiect.R;
+import com.example.octav.proiect.Utils.DataBase;
+import com.example.octav.proiect.Utils.Utils;
+
+import java.util.List;
 
 import static com.example.octav.proiect.Utils.Constants.HIGH;
 import static com.example.octav.proiect.Utils.Constants.LOW;
@@ -20,11 +26,12 @@ import static com.example.octav.proiect.Utils.Constants.MIN;
 import static com.example.octav.proiect.Utils.Constants.MODE_EXTRA_PARCELABLE;
 import static com.example.octav.proiect.Utils.Constants.MUTE;
 import static com.example.octav.proiect.Utils.Constants.NORMAL;
-import static com.example.octav.proiect.Utils.Constants.NOTIFICATION_EXTRA_PARCELABLE;
+import static com.example.octav.proiect.Utils.Constants.NOTIFICATION_EXTRA_ID;
 import static com.example.octav.proiect.Utils.Constants.OFF;
 import static com.example.octav.proiect.Utils.Constants.ON;
 import static com.example.octav.proiect.Utils.Constants.REMINDER;
 import static com.example.octav.proiect.Utils.Constants.VIBRATE;
+import static com.example.octav.proiect.Utils.Constants.TAG;
 
 
 public class NotificationView extends AppCompatActivity {
@@ -71,9 +78,41 @@ public class NotificationView extends AppCompatActivity {
 
         n_message = (TextView) findViewById(R.id.nv_message);
 
-        NotificationObject n = getIntent().getParcelableExtra(NOTIFICATION_EXTRA_PARCELABLE);
+        ui_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        NotificationObject n = null;
+        int notificationId = getIntent().getIntExtra(NOTIFICATION_EXTRA_ID ,0);
+        DataBase db = new DataBase(NotificationView.this.openOrCreateDatabase("MyDataBase", Context.MODE_PRIVATE, null));
+
+        for (NotificationObject not : db.getNotifications()) {
+            if (not.id == notificationId) {
+                n = not;
+                break;
+            }
+        }
+
         Boolean reminder = getIntent().getExtras().getBoolean(REMINDER);
-        ModeObject mode = getIntent().getParcelableExtra(MODE_EXTRA_PARCELABLE);
+
+        if (n == null) {
+            Log.d(TAG, " Null Notification Object");
+            return;
+        }
+
+        // Get Mode
+        ModeObject mode = null;
+        List<ModeObject> modeList = db.getModes();
+        for (ModeObject m : modeList) {
+            if (m.id == n.mode) {
+                Utils.setMode(NotificationView.this, m, false);
+                mode = m;
+                break;
+            }
+        }
 
         n_message.setText(n.message);
 
@@ -173,13 +212,7 @@ public class NotificationView extends AppCompatActivity {
         } else
             ui_message.setVisibility(View.GONE);
 
-        ui_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-
+        //Delete Notification from database
+        db.deleteNotification(n);
     }
 }

@@ -33,9 +33,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import static com.example.octav.proiect.Utils.Constants.ALARM_ACTION;
-import static com.example.octav.proiect.Utils.Constants.ALARM_EXTRA_PARCELABLE;
+import static com.example.octav.proiect.Utils.Constants.ALARM_EXTRA_ID;
 import static com.example.octav.proiect.Utils.Constants.CURRENT_ALARM;
 import static com.example.octav.proiect.Utils.Constants.IS_ALARM_EDIT;
+import static com.example.octav.proiect.Utils.Constants.TAG;
 
 public class AddAlarmDialog extends DialogFragment {
 
@@ -332,7 +333,7 @@ public class AddAlarmDialog extends DialogFragment {
 
                 AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
                 Intent i = new Intent(ALARM_ACTION);
-                i.putExtra(ALARM_EXTRA_PARCELABLE, alarm);
+                i.putExtra(ALARM_EXTRA_ID, alarm.id);
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, id, i, PendingIntent.FLAG_UPDATE_CURRENT);
                 pendingIntent.cancel();
                 manager.cancel(pendingIntent);
@@ -347,9 +348,11 @@ public class AddAlarmDialog extends DialogFragment {
             calSet.set(Calendar.SECOND, 0);
             calSet.set(Calendar.MILLISECOND, 0);
             Intent i = new Intent(ALARM_ACTION);
-            i.putExtra(ALARM_EXTRA_PARCELABLE, alarm);
-            PendingIntent operation = PendingIntent.getActivity(context, id, i, Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.putExtra(ALARM_EXTRA_ID, alarm.id);
 
+            Log.d(TAG, "SET ALARM MODE : " + alarm.mode);
+
+            PendingIntent operation = PendingIntent.getActivity(context, id, i, PendingIntent.FLAG_UPDATE_CURRENT);
             if (calSet.getTimeInMillis() < System.currentTimeMillis()) {
                 calSet.add(Calendar.MILLISECOND, 1000 * 3600 * 24 * 7);//Add a week
             }

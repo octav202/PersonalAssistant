@@ -53,8 +53,8 @@ public class Constants {
 
     public static final String EXTRA_BRIGHTNESS = "brightness";
     public static final String KEY_GUARD_LOCK = "MyKeyguardLock";
-    public static final String ALARM_EXTRA_PARCELABLE = "alarmInfo";
-    public static final String NOTIFICATION_EXTRA_PARCELABLE = "notificationInfo";
+    public static final String ALARM_EXTRA_ID = "alarmInfo";
+    public static final String NOTIFICATION_EXTRA_ID = "notificationInfo";
     public static final String MODE_EXTRA_PARCELABLE = "modeInfo";
     public static final String ALARM_ACTION = "alarm_view";
     public static final String WIDGET_MODE = "widget_mode";
